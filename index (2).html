@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<base target="_top">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pondok Pesantren Al-Wustha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#0b4d24;--g2:#14803c;--g3:#1f9a4a;--soft:#e7f2ea;--gold:#b8891c;--text:#1f2937;--muted:#6b7280;--gray:#e5e5e5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;color:var(--text);line-height:1.6;background:#fff}
+h1,h2,h3,.serif{font-family:'Merriweather',serif}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1100px,92%);margin:0 auto}
+.hidden{display:none!important}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:var(--g1);color:#fff}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--g1);display:grid;place-items:center;font-weight:700;font-size:.9rem;overflow:hidden;flex:none}
+.logo img{width:100%;height:100%;object-fit:cover}
+.brand small{display:block;font-size:.6rem;letter-spacing:.5px;opacity:.9;line-height:1.2}
+.brand b{display:block;font-size:1rem;line-height:1.2}
+nav ul{display:flex;gap:22px;list-style:none}
+nav a{font-size:.85rem;font-weight:500;padding:4px 0;border-bottom:2px solid transparent;cursor:pointer}
+nav a.active{border-color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border:none;border-radius:8px;background:var(--g1);color:#fff;font:600 .85rem 'Poppins',sans-serif;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--g2)}
+.btn.light{background:#f1f1f1;color:var(--g1)}
+.btn.light:hover{background:#fff}
+.btn.full{width:100%;justify-content:center;padding:13px}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* hero */
+.hero{position:relative;color:var(--g1);padding:30px 0 90px;background:linear-gradient(180deg,#dfe7e1,#f4f6f4);overflow:hidden}
+.hero .bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.45}
+.hero .wrap{position:relative}
+.ar{font-size:1.5rem;direction:rtl;text-align:left;margin-bottom:6px}
+.hero h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.3;max-width:520px;margin-bottom:14px}
+.hero .line{width:60px;height:3px;background:var(--g1);margin-bottom:14px}
+.hero p{max-width:340px;font-size:.82rem;margin-bottom:18px}
+
+/* generic */
+main{min-height:60vh}
+.page{padding-bottom:50px}
+.panel{background:var(--g1);color:#fff;border-radius:18px;padding:26px}
+.center{text-align:center}
+.title{font-size:1.5rem;color:var(--g1);margin:34px 0 6px}
+.sub{color:var(--muted);font-size:.85rem;margin-bottom:22px}
+.pill{display:inline-block;background:var(--g1);color:#fff;padding:7px 28px;border-radius:8px;font-family:'Merriweather',serif;font-size:1rem;margin:30px 0 16px}
+.ph{background:linear-gradient(135deg,#cfe3d5,#a9cdb6);display:grid;place-items:center;color:#4b7a5c;font-size:.8rem;text-align:center;padding:10px}
+.bgimg{background-size:cover;background-position:center}
+
+/* beranda */
+.feat{margin-top:-60px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:20px 30px}
+.feat div{display:flex;gap:12px;align-items:center}
+.feat .ic{width:44px;height:44px;border-radius:10px;background:#fff;color:var(--g1);display:grid;place-items:center;font-size:1.3rem;flex:none}
+.feat b{font-size:.85rem;display:block}.feat span{font-size:.72rem;opacity:.9}
+.tentang{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:50px;align-items:start}
+.tentang .lbl{color:var(--gold);font-family:'Merriweather',serif;font-size:.85rem}
+.tentang h2{font-size:1.7rem;color:var(--g1);margin:6px 0 12px}
+.tentang p{font-size:.82rem;color:#444;margin-bottom:16px}
+.tentang a.more{font-size:.78rem;font-weight:600;color:var(--g1);cursor:pointer}
+.stats{display:grid;gap:12px;margin-top:40px}
+.stats div{display:flex;gap:10px;font-size:.78rem}
+.stats b{display:block;font-size:.85rem}
+.tentang .img{height:260px;border-radius:6px}
+
+/* profil */
+.sejarah p{font-size:.85rem;margin-bottom:12px;text-align:justify}
+.sejarah h2{font-size:1.5rem;margin-bottom:14px}
+.visi{background:#4f7a5f;color:#fff;border-radius:12px;padding:26px;text-align:center;margin-top:24px}
+.visi h3{margin-bottom:10px;letter-spacing:2px}
+.visi p{font-size:.9rem}
+.misi{background:#4f7a5f;color:#fff;border-radius:12px;padding:26px;margin-top:24px}
+.misi h3{text-align:center;letter-spacing:2px;margin-bottom:12px}
+.misi li{font-size:.85rem;margin:0 0 8px 18px}
+.org{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:10px}
+.org .box{border:1px solid #bbb;border-radius:4px;padding:6px 14px;font-size:.72rem;text-align:center;background:#fff;min-width:120px}
+.org .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.org .v{width:1px;height:14px;background:#888}
+.map{margin-top:30px;border-radius:10px;overflow:hidden;background:var(--gray);height:220px;display:grid;place-items:center;color:#888}
+.map iframe{width:100%;height:100%;border:0}
+.lokasi{margin-top:14px;background:var(--g1);color:#fff;border-radius:10px;padding:18px}
+.lokasi p{font-size:.8rem;margin:4px 0 12px}
+
+/* program */
+.prog{display:grid;gap:14px;margin-top:16px}
+.prog .c{background:#a8c4b0;border-radius:12px;padding:16px;text-align:center;color:var(--g1)}
+.prog .c .ic{font-size:1.6rem}
+.prog .c b{display:block;font-size:.9rem}.prog .c span{font-size:.72rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kur{border-radius:12px;padding:18px}
+.kur.g{background:var(--g1);color:#fff}.kur.s{background:var(--gray);text-align:center}
+.kur h3{font-size:.95rem;margin-bottom:10px}
+.kur li{font-size:.82rem;margin:0 0 5px 18px}
+.jenjang{display:grid;gap:12px}
+.jenjang .j{background:var(--gray);border-radius:10px;padding:18px;display:flex;gap:18px;align-items:center}
+.jenjang .j .ic{font-size:2rem;color:var(--g1)}
+.jenjang .j div{flex:1;text-align:center}.jenjang b{font-family:'Merriweather',serif;color:var(--g1)}
+.jenjang span{display:block;font-size:.72rem}
+.mapel{background:var(--gray);border-radius:10px;padding:22px;margin-bottom:16px}
+.mapel h3{text-align:center;color:var(--g1);margin-bottom:10px}
+.mapel li{font-size:.85rem;margin:0 0 4px 20px}
+
+/* kegiatan */
+.jadwal{display:flex;gap:6px;overflow-x:auto;background:var(--soft);border-radius:14px;padding:14px;margin-bottom:10px}
+.jadwal div{min-width:92px;text-align:center;font-size:.68rem;color:#555}
+.jadwal .ic{width:34px;height:34px;border:1px solid var(--g1);border-radius:8px;display:grid;place-items:center;margin:0 auto 6px;color:var(--g1);font-size:1rem}
+.jadwal b{display:block;color:var(--text);font-size:.78rem}
+.kg{display:grid;gap:16px}
+.kg .k{background:var(--gray);border-radius:12px;overflow:hidden;text-align:center;padding-bottom:14px}
+.kg .k .im{height:120px;position:relative}
+.kg .k h3{font-size:.95rem;color:var(--g1);margin-top:14px}
+.kg .k p{font-size:.72rem;color:#555;padding:0 14px}
+.kg .badge{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);width:32px;height:32px;border-radius:50%;background:var(--g1);color:#fff;display:grid;place-items:center;font-size:.9rem}
+
+/* dokumentasi */
+.feature{background:#cfe6d6;border-radius:14px;padding:18px;margin-top:20px}
+.feature h2{font-size:1.4rem;color:var(--g1)}
+.meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.78rem;color:#555;margin:6px 0}
+.gal{display:grid;grid-template-columns:2fr 1fr;gap:6px;margin-top:10px}
+.gal .ph,.gal .bgimg{height:140px;border-radius:10px}
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.doc{background:var(--gray);border-radius:10px;overflow:hidden;padding-bottom:12px}
+.doc .im{height:110px}
+.doc .in{padding:10px 14px;font-size:.75rem}
+.tag{display:inline-block;background:var(--g1);color:#fff;border-radius:99px;padding:1px 10px;font-size:.62rem;margin-bottom:4px}
+.doc h4{font-size:.85rem}
+
+/* psb */
+.step{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.step .s{background:#fff;border-radius:10px;padding:12px;font-size:.72rem;text-align:center;border:1px solid #d7e6dc}
+.step .s b{display:block;color:var(--g1);font-size:.78rem}
+.steps6{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.steps6 .s{display:flex;gap:10px;align-items:flex-start;font-size:.72rem}
+.steps6 .n{width:36px;height:36px;border-radius:50%;background:var(--g1);color:#fff;display:grid;place-items:center;flex:none}
+.steps6 b{display:block;font-size:.8rem}
+.soft{background:var(--soft);border-radius:14px;padding:20px;margin-top:22px}
+table{width:100%;border-collapse:collapse;font-size:.75rem}
+th{background:var(--g1);color:#fff;padding:9px;text-align:left}
+td{padding:9px;border-bottom:1px solid #ddd}
+.tscroll{overflow-x:auto}
+.syarat li,.info li{font-size:.8rem;margin:0 0 6px 18px}
+.formbox{margin-top:30px;padding:0 4px}
+.formbox h3{color:var(--g1);font-size:1.2rem}
+.f{margin-bottom:14px}
+.f label{display:block;font-size:.8rem;font-weight:600;color:var(--g1);margin-bottom:4px}
+.f input,.f select,.f textarea{width:100%;padding:10px 12px;border:1px solid #bbb;border-radius:8px;font:400 .85rem 'Poppins',sans-serif;background:#fff}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--g3);border-color:var(--g3)}
+.f textarea{min-height:80px;resize:vertical}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.up{border:1px dashed #888;border-radius:8px;padding:10px;font-size:.75rem;cursor:pointer;display:block;text-align:center;background:#fff;color:var(--g1)}
+.up.ok{border-color:var(--g2);background:#eaf6ee}
+.up input{display:none}
+.msg{margin-top:12px;padding:11px 14px;border-radius:8px;font-size:.82rem;display:none;word-break:break-word}
+.msg.ok{display:block;background:#e6f6ec;color:#0a5a2a}.msg.err{display:block;background:#fdecec;color:#9b1c1c}
+
+/* footer */
+footer{background:linear-gradient(135deg,var(--g2),var(--g3));color:#fff;padding:30px 0 0}
+footer .brand{margin-bottom:18px}
+footer ul{list-style:none;font-size:.78rem;margin:6px 0 16px}
+footer ul li{margin-bottom:2px;cursor:pointer}
+footer .ct{font-size:.75rem;display:flex;gap:8px;margin-bottom:8px}
+footer .copy{background:linear-gradient(90deg,#062c15,#16a34a);text-align:center;font-size:.68rem;padding:12px;margin-top:20px;font-weight:600}
+
+/* modal & dashboard */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:grid;place-items:center;padding:16px}
+.mbox{background:#fff;border-radius:16px;width:min(420px,100%);padding:26px;position:relative}
+.mbox h3{color:var(--g1);margin-bottom:4px}
+.mbox .x{position:absolute;right:14px;top:10px;border:0;background:none;font-size:1.5rem;cursor:pointer}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.role{border:2px solid #d7e6dc;border-radius:10px;padding:10px;text-align:center;cursor:pointer;font-size:.78rem;font-weight:600;background:#fff}
+.role .e{font-size:1.4rem;display:block}
+.role.sel{border-color:var(--g1);background:var(--soft);color:var(--g1)}
+.dash h2{color:var(--g1)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.cards .cd{background:var(--soft);border-radius:12px;padding:16px;font-size:.8rem}
+.cards .cd b{display:block;font-size:1.4rem;color:var(--g1)}
+.ann{border-left:4px solid var(--g1);background:var(--soft);padding:10px 14px;border-radius:6px;margin-bottom:10px;font-size:.8rem}
+.ann b{display:block;font-size:.85rem}
+.sbadge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.68rem;background:#e0e0e0}
+.sbadge.Diterima{background:#c9efd5;color:#0a5a2a}.sbadge.Diverifikasi{background:#d8e8fb;color:#1c4a8a}.sbadge.Ditolak{background:#fbd5d5;color:#8a1c1c}
+
+@media(max-width:820px){
+ nav ul{display:none;position:absolute;top:66px;left:0;right:0;background:var(--g1);flex-direction:column;padding:16px 4%;gap:14px}
+ nav ul.open{display:flex}
+ .burger{display:block}
+ .hdr-btn{display:none}
+ .feat,.tentang,.two,.step,.steps6{grid-template-columns:1fr}
+ .docs{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap">
+  <div class="brand" data-nav="beranda">
+   <div class="logo" id="logoBox">AW</div>
+   <div><small>PONDOK PESANTREN</small><b>AL-WUSTHA</b><small>Sariwangi - Tasikmalaya</small></div>
+  </div>
+  <nav>
+   <ul id="menu">
+    <li><a data-nav="beranda">Beranda</a></li>
+    <li><a data-nav="profil">Profil</a></li>
+    <li><a data-nav="program">Program</a></li>
+    <li><a data-nav="kegiatan">Kegiatan</a></li>
+    <li><a data-nav="dokumentasi">Dokumentasi</a></li>
+    <li><a data-nav="psb">PSB</a></li>
+   </ul>
+  </nav>
+  <div style="display:flex;gap:8px;align-items:center">
+   <button class="btn light hdr-btn" data-nav="psb">👤 Pendaftaran</button>
+   <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+ </div>
+</header>
+
+<section class="hero" id="hero">
+ <div class="bg" id="heroBg"></div>
+ <div class="wrap">
+  <div class="ar serif">تعلموا العلم وتعلموا</div>
+  <h1>Membangun Generasi Berilmu, Berakhlak, dan Beramal</h1>
+  <div class="line"></div>
+  <p>Pondok pesantren Al-Wustha berkomitmen mencetak generasi muslim yang berilmu luas, berakhlak mulia, dan siap berkontribusi untuk umat dan berguna.</p>
+  <button class="btn" id="btnMasuk">Masuk &nbsp;›</button>
+ </div>
+</section>
+
+<main>
+<!-- ============ BERANDA ============ -->
+<div class="page wrap" data-page="beranda">
+ <div class="panel feat">
+  <div><span class="ic">🎓</span><p><b>Pendidikan Terpadu</b><span>Kurikulum agama dan umum yang seimbang</span></p></div>
+  <div><span class="ic">👥</span><p><b>Pembinaan Akhlak</b><span>Membantu karakter islami dalam kehidupan sehari-hari</span></p></div>
+  <div><span class="ic">🖥️</span><p><b>Ilmu yang bermanfaat</b><span>Menguasai ilmu syar'i dan keterampilan untuk masa depan</span></p></div>
+  <div><span class="ic">💚</span><p><b>Bekhidmat untuk umat</b><span>Melahirkan generasi yang peduli dan bermanfaat</span></p></div>
+ </div>
+ <div class="tentang">
+  <div>
+   <div class="lbl">Tentang Kami</div>
+   <h2>Pondok Pesantren<br>Al-Wustha</h2>
+   <p>Pondok Pesantren Al-Wustha adalah lembaga pendidikan Islam yang berdiri dengan tujuan mencetak generasi yang unggul dalam ilmu pengetahuan, kokoh dalam akidah, mulia dalam akhlak, dan luas dalam kemanfaatan.</p>
+   <a class="more" data-nav="profil">Selengkapnya tentang kami →</a>
+   <div class="stats">
+    <div><span>👤</span><p><b>100+</b>Santri Aktif</p></div>
+    <div><span>👤</span><p><b>15+</b>Ustadz / Ustadzah</p></div>
+    <div><span>📖</span><p><b>10+</b>Program pendidikan dan pembinaan</p></div>
+    <div><span>🏠</span><p><b>50+</b>Tahun berdiri</p></div>
+   </div>
+  </div>
+  <div class="img ph bgimg" id="imgTentang">Foto santri (isi di CONFIG)</div>
+ </div>
+</div>
+
+<!-- ============ PROFIL ============ -->
+<div class="page wrap hidden" data-page="profil">
+ <div class="panel sejarah" style="margin-top:24px">
+  <h2>Sejarah Pesantren</h2>
+  <p>Pondok Pesantren Al-Wustha berdiri di Kp. Cipaku, Desa Sukamulih, Kecamatan Sariwangi, Kabupaten Tasikmalaya, dengan semangat menghadirkan pendidikan Islam yang berpadu dengan pembinaan akhlak.</p>
+  <p>Dari awal yang sederhana, pesantren terus berkembang melalui dukungan masyarakat, para alumni, dan pengasuh yang berkhidmat dalam menyebarkan ilmu.</p>
+  <p><i>(Ganti dua paragraf ini dengan teks sejarah lengkap pesantren pada bagian HTML "Sejarah Pesantren".)</i></p>
+ </div>
+ <div class="visi"><h3>VISI</h3><p>Mewujudkan lembaga pendidikan Islam yang unggul dan mencetak generasi muda cerdas, terampil dan berakhlakul karimah, berwawasan Ahlussunnah wal jamaah.</p></div>
+ <div class="misi"><h3>MISI</h3><ul>
+  <li>Membimbing dan membina santri agar memahami ajaran Islam sesuai Al-Qur'an dan As-Sunnah.</li>
+  <li>Membentuk santri yang berakhlak baik, disiplin, bertanggung jawab, dan mandiri.</li>
+  <li>Mengembangkan kemampuan santri dalam ilmu pengetahuan, keterampilan, dan teknologi.</li>
+  <li>Membangun lembaga yang amanah dan bermanfaat bagi masyarakat.</li>
+ </ul></div>
+ <h2 class="title center">Struktur Organisasi</h2>
+ <div class="org">
+  <div class="box">Pembina Pondok Pesantren<br>(nama)</div><div class="v"></div>
+  <div class="box">Pengasuh<br>(nama)</div><div class="v"></div>
+  <div class="box">Dewan Pengasuh<br>(daftar nama)</div><div class="v"></div>
+  <div class="row"><div class="box">Ketua<br>(nama)</div><div class="box">Wakil Ketua<br>(nama)</div></div><div class="v"></div>
+  <div class="row"><div class="box">Sekretaris<br>(nama)</div><div class="box">Bendahara<br>(nama)</div></div><div class="v"></div>
+  <div class="row"><div class="box">Bidang Pendidikan</div><div class="box">Bidang Kesantrian</div><div class="box">Bidang Sarana</div><div class="box">Bidang Humas</div></div><div class="v"></div>
+  <div class="box">Santri</div>
+ </div>
+ <div class="map" id="mapBox">Peta lokasi (isi MAP_EMBED di CONFIG)</div>
+ <div class="lokasi"><b class="serif">Lokasi Kami</b>
+  <p>Kp. Cipaku Rt/06 Rw/03 Desa. Sukamulih Kec. Sariwangi Tasikmalaya</p>
+  <a class="btn light" id="btnMaps" target="_blank">Buka di Google Maps</a>
+ </div>
+</div>
+
+<!-- ============ PROGRAM ============ -->
+<div class="page wrap hidden" data-page="program">
+ <div class="panel center" style="margin-top:24px">
+  <h2 style="font-size:1.1rem">PROGRAM PENDIDIKAN</h2>
+  <div class="prog">
+   <div class="c"><div class="ic">📖</div><b>Program Salafiyah</b><span>Mengkaji kitab kuning dan ilmu agama secara mendalam</span></div>
+   <div class="c"><div class="ic">🎓</div><b>Pendidikan Formal</b><span>Pendidikan sesuai kurikulum nasional terpadu dengan pesantren</span></div>
+   <div class="c"><div class="ic">🏅</div><b>Program Unggulan</b><span>Tahfidz, bahasa, dan pengembangan potensi santri</span></div>
+  </div>
+ </div>
+ <h2 class="title center">KURIKULUM TERPADU</h2>
+ <p class="sub center">Kombinasi kurikulum Kementerian Agama dan kurikulum pesantren untuk menghasilkan lulusan yang berilmu dan berjiwa.</p>
+ <div class="two">
+  <div class="kur g"><h3>Kurikulum Pesantren</h3><ol><li>Kitab Kuning (Fiqih, Tahfidz, Hadits, Aqidah, Akhlak)</li><li>Tahfidz &amp; Tahsin Al-Qur'an</li><li>Bahasa Arab / Ilmu Alat</li><li>Praktik Ibadah</li></ol></div>
+  <div class="kur s"><h3>Kurikulum Umum</h3><ol style="text-align:left"><li>Kurikulum Kementerian Agama</li><li>Pengetahuan Umum</li><li>Bahasa</li><li>Teknologi Informasi &amp; Komunikasi</li></ol></div>
+ </div>
+ <div class="center"><span class="pill">JENJANG PENDIDIKAN</span></div>
+ <p class="sub center">Berfungsi jenjang pendidikan untuk mengembangkan potensi santri sesuai dengan tahap perkembangan dan kebutuhan.</p>
+ <div class="jenjang">
+  <div class="j"><span class="ic">🧒</span><div><b>PAUD</b><span>Pendidikan Anak Usia Dini</span><span>4-6 Tahun</span></div></div>
+  <div class="j"><span class="ic">🧑‍🎓</span><div><b>SMP</b><span>Sekolah Menengah Pertama</span><span>12-15 Tahun</span></div></div>
+  <div class="j"><span class="ic">👨‍🎓</span><div><b>MA</b><span>Madrasah Aliyah</span><span>15-18 Tahun</span></div></div>
+  <div class="j"><span class="ic">🎓</span><div><b>KULIAH</b><span>Program Spesialisasi Tahfidz &amp; Kitab</span><span>18+ Tahun</span></div></div>
+ </div>
+ <div class="center"><span class="pill">MATA PELAJARAN</span></div>
+ <div class="mapel"><h3>PESANTREN</h3><ol><li>Nahwu</li><li>Shorof</li><li>Fiqih</li><li>Aqidah / Tauhid</li><li>Akhlak</li><li>Hadits</li><li>Tafsir</li><li>Tahfidz Al-Qur'an</li></ol></div>
+ <div class="mapel"><h3>UMUM</h3><ol><li>Matematika</li><li>Bahasa Indonesia</li><li>Bahasa Inggris</li><li>IPA</li><li>IPS</li><li>Pendidikan Pancasila</li><li>Seni Budaya</li><li>Prakarya</li><li>PJOK</li><li>Bahasa Arab</li></ol></div>
+</div>
+
+<!-- ============ KEGIATAN ============ -->
+<div class="page wrap hidden" data-page="kegiatan">
+ <h2 class="title center">Kegiatan Harian Santri</h2>
+ <p class="sub center">Jadwal kegiatan harian santri yang terstruktur untuk membentuk disiplin dan kebiasaan baik.</p>
+ <div class="jadwal" id="jadwal"></div>
+ <h2 class="title center">Jenis Kegiatan</h2>
+ <p class="sub center">Kegiatan yang rutin dilaksanakan untuk mendukung pendidikan, pembinaan karakter, dan pengembangan potensi santri.</p>
+ <div class="kg" id="kg"></div>
+</div>
+
+<!-- ============ DOKUMENTASI ============ -->
+<div class="page wrap hidden" data-page="dokumentasi">
+ <div class="feature">
+  <div class="serif" style="font-size:.8rem;color:var(--g1)">Dokumentasi Terbaru</div>
+  <h2 id="dfTitle"></h2>
+  <div class="meta" id="dfMeta"></div>
+  <div class="gal" id="dfGal"></div>
+ </div>
+ <div class="docs" id="docs"></div>
+ <div class="center" style="margin-top:22px"><button class="btn" id="btnMore">Muat Lebih Banyak ↓</button></div>
+</div>
+
+<!-- ============ PSB ============ -->
+<div class="page wrap hidden" data-page="psb">
+ <div class="step" style="margin-top:20px">
+  <div class="s"><b>Pendaftaran Online</b>Daftar kapan saja, di mana saja</div>
+  <div class="s"><b>Upload Berkas</b>Unggah berkas dengan mudah dan aman</div>
+  <div class="s"><b>Pantau Status</b>Pantau proses pendaftaran</div>
+  <div class="s"><b>Informasi Transparan</b>Biaya jelas dan terbuka</div>
+ </div>
+ <div class="soft">
+  <h2 class="center serif" style="color:var(--g1);font-size:1.2rem">Pendaftaran Online</h2>
+  <p class="sub center" style="margin:6px 0 0">Daftar sekarang dengan 6 langkah mudah berikut ini:</p>
+  <div class="steps6">
+   <div class="s"><span class="n">1</span><p><b>Buat Akun</b>Isi data diri dan akun pendaftar</p></div>
+   <div class="s"><span class="n">2</span><p><b>Isi Formulir</b>Lengkapi data calon santri</p></div>
+   <div class="s"><span class="n">3</span><p><b>Upload Berkas</b>Unggah dokumen persyaratan</p></div>
+   <div class="s"><span class="n">4</span><p><b>Pilih Program</b>Pilih jenjang dan program</p></div>
+   <div class="s"><span class="n">5</span><p><b>Konfirmasi</b>Cek data lalu kirim</p></div>
+   <div class="s"><span class="n">6</span><p><b>Verifikasi</b>Tim memverifikasi data Anda</p></div>
+  </div>
+ </div>
+ <h2 class="title center">Biaya Pendidikan</h2>
+ <p class="sub center">Berikut biaya masuk dan SPP bulanan untuk setiap jenjang pendidikan.</p>
+ <div class="tscroll"><table>
+  <tr><th>Jenjang Pendidikan</th><th>Biaya Pendaftaran</th><th>Biaya Masuk</th><th>SPP Bulanan</th><th>Keterangan</th></tr>
+  <tr><td>Salafiyah</td><td>Rp 250.000</td><td>Rp 2.000.000</td><td>Rp 600.000</td><td>Kajian kitab dan ilmu agama</td></tr>
+  <tr><td>Tahfidzul Qur'an</td><td>Rp 250.000</td><td>Rp 2.500.000</td><td>Rp 700.000</td><td>Program tahfidz dengan target hafalan</td></tr>
+  <tr><td>Pendidikan Formal</td><td>Rp 250.000</td><td>Rp 3.000.000</td><td>Rp 800.000</td><td>Mengikuti kurikulum formal dan agama</td></tr>
+ </table></div>
+ <p class="sub" style="font-size:.68rem;margin-top:6px">*Angka di atas contoh, ubah sesuai ketentuan resmi pesantren.</p>
+ <h3 class="serif" style="color:var(--g1);margin:24px 0 8px">Persyaratan Pendaftaran</h3>
+ <ul class="syarat"><li>Fotokopi Akta Kelahiran (2 lembar)</li><li>Fotokopi Kartu Keluarga (2 lembar)</li><li>Pas Foto 3x4 (3 lembar)</li><li>Fotokopi Rapor/Ijazah Terakhir (2 lembar)</li><li>Surat Keterangan Sehat dari Dokter</li><li>Surat Keterangan Baik (jika ada)</li><li>Mengisi Formulir Pendaftaran Online</li></ul>
+ <h3 class="serif" style="color:var(--g1);margin:20px 0 8px">Informasi Penting</h3>
+ <ul class="info"><li>Pendaftaran dibuka sebagaimana jadwal PSB.</li><li>Silakan hubungi tim kami untuk pertanyaan lebih lanjut.</li><li>Pengumuman hasil melalui website dan WhatsApp.</li><li>Daftar ulang dilakukan setelah pendaftaran dinyatakan diterima.</li></ul>
+
+ <div class="formbox">
+  <h3>📝 FORMULIR PENDAFTARAN <span class="serif" style="display:block;font-size:1.4rem">Daftar Sekarang</span></h3>
+  <p class="sub" style="font-size:.75rem">Isi formulir di bawah ini dengan data yang benar dan lengkap.</p>
+  <form id="psbForm" novalidate>
+   <div class="f"><label>Jenjang Pendidikan *</label><select name="jenjang" required><option value="">Pilih jenjang pendidikan</option><option>PAUD</option><option>SMP</option><option>MA</option><option>Kuliah (Spesialisasi Tahfidz &amp; Kitab)</option></select></div>
+   <div class="f"><label>Nama Lengkap *</label><input name="nama" placeholder="Masukkan nama lengkap" required></div>
+   <div class="f"><label>Jenis Kelamin *</label><select name="jk" required><option value="">Pilih jenis kelamin</option><option>Laki-laki</option><option>Perempuan</option></select></div>
+   <div class="f2"><div class="f"><label>Tempat Lahir *</label><input name="tempat" placeholder="Tempat lahir" required></div><div class="f"><label>Tanggal Lahir *</label><input type="date" name="tgl" required></div></div>
+   <div class="f"><label>Asal Sekolah *</label><input name="asal" placeholder="Masukkan asal sekolah/madrasah" required></div>
+   <div class="f"><label>Alamat Lengkap *</label><textarea name="alamat" placeholder="Masukkan alamat lengkap" required></textarea></div>
+   <div class="f"><label>No. WhatsApp (aktif) *</label><input name="wa" inputmode="tel" placeholder="contoh: 08123456789" required></div>
+   <div class="f"><label>Upload Berkas</label><small style="color:#666;font-size:.68rem">Format JPG/PNG/PDF, maksimal 2 MB per berkas</small>
+    <div class="f2" style="margin-top:6px">
+     <label class="up">📎 <span>Scan Akta Kelahiran</span><input type="file" data-key="akta" accept=".jpg,.jpeg,.png,.pdf"></label>
+     <label class="up">📎 <span>Kartu Keluarga</span><input type="file" data-key="kk" accept=".jpg,.jpeg,.png,.pdf"></label>
+     <label class="up">📎 <span>Ijazah Terakhir</span><input type="file" data-key="ijazah" accept=".jpg,.jpeg,.png,.pdf"></label>
+     <label class="up">📎 <span>Pas Foto 3x4</span><input type="file" data-key="foto" accept=".jpg,.jpeg,.png"></label>
+    </div></div>
+   <label style="font-size:.78rem;display:flex;gap:8px;margin-bottom:14px"><input type="checkbox" id="agree"> Saya menyatakan seluruh keterangan yang saya isi benar.</label>
+   <button class="btn full" id="psbBtn" type="submit">Daftar Sekarang</button>
+   <div class="msg" id="psbMsg"></div>
+  </form>
+ </div>
+
+ <h2 class="title center">Status Pendaftaran</h2>
+ <div class="soft" style="margin-top:0">
+  <div class="f2">
+   <div class="f"><label>Nomor Pendaftaran</label><input id="stId" placeholder="PSB-2026-0001"></div>
+   <div class="f"><label>No. WhatsApp</label><input id="stWa" placeholder="08123456789"></div>
+  </div>
+  <button class="btn" id="stBtn">Cek Status</button>
+  <div class="msg" id="stMsg"></div>
+ </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="page wrap hidden dash" data-page="dashboard">
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:10px;flex-wrap:wrap">
+  <div><h2 id="dName">Selamat datang</h2><span class="sbadge" id="dRole"></span></div>
+  <button class="btn" id="btnKeluar">Keluar</button>
+ </div>
+ <div id="dBody"></div>
+</div>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="brand" data-nav="beranda"><div class="logo" id="logoFoot">AW</div><div><small>PONDOK PESANTREN</small><b>AL-WUSTHA</b><small>Sariwangi - Tasikmalaya</small></div></div>
+  <div>Quick Link :</div>
+  <ul><li data-nav="beranda">Beranda</li><li data-nav="profil">Profil</li><li data-nav="program">Program</li><li data-nav="kegiatan">Kegiatan</li><li data-nav="dokumentasi">Dokumentasi</li><li data-nav="psb">PSB</li></ul>
+  <div>Kontak :</div>
+  <div class="ct" style="margin-top:8px">✉️ ponpesaalwustha@gmail.com</div>
+  <div class="ct">📍 Kp. Cipaku Rt/06 Rw/03 Desa. Sukamulih Kec. Sariwangi Tasikmalaya</div>
+  <div class="ct" id="sosmed">📷 Instagram &nbsp; 📘 Facebook &nbsp; 🎵 TikTok</div>
+ </div>
+ <div class="copy">© <span id="yr"></span> Pondok Pesantren Al-Wustha</div>
+</footer>
+
+<!-- MODAL MASUK -->
+<div class="modal hidden" id="modal">
+ <div class="mbox">
+  <button class="x" id="mClose" aria-label="Tutup">×</button>
+  <h3 class="serif">Masuk</h3>
+  <p class="sub" style="margin-bottom:0;font-size:.78rem">Pilih peran, lalu masukkan kode akses khusus Anda.</p>
+  <div class="roles" id="roles">
+   <div class="role sel" data-role="admin"><span class="e">🛡️</span>Admin</div>
+   <div class="role" data-role="guru"><span class="e">👨‍🏫</span>Guru / Mudaris</div>
+   <div class="role" data-role="santri"><span class="e">🧑‍🎓</span>Santri</div>
+   <div class="role" data-role="ortu"><span class="e">👪</span>Orang Tua</div>
+  </div>
+  <div class="f"><label>Kode Akses</label><input id="mCode" placeholder="Masukkan kode akses" autocomplete="off"></div>
+  <button class="btn full" id="mBtn">Masuk</button>
+  <div class="msg" id="mMsg"></div>
+ </div>
+</div>
+
+<script>
+/* ========= KONFIGURASI (isi sesuai kebutuhan) ========= */
+const CONFIG = {
+  logo: '',          // URL logo pesantren (kosong = tulisan "AW")
+  hero: '',          // URL foto gedung untuk latar hero
+  tentang: '',       // URL foto santri pada bagian Tentang Kami
+  mapEmbed: '',      // URL embed Google Maps (src dari iframe "Sematkan peta")
+  mapLink: 'https://www.google.com/maps/search/?api=1&query=Pondok+Pesantren+Al-Wustha+Sariwangi+Tasikmalaya',
+  instagram: '', facebook: '', tiktok: ''
+};
+const JADWAL = [
+  ['04.00','Tahajud & Subuh','Sholat tahajud dan sholat subuh berjamaah','🌙'],
+  ['05.30','Tilawah Al-Qur\'an','Membaca Al-Qur\'an bersama','📖'],
+  ['07.00','Pembelajaran Pagi','Kegiatan belajar mengajar formal','🎓'],
+  ['12.00','Istirahat & Makan','Istirahat dan makan siang','🍴'],
+  ['13.00','Pembelajaran Siang','Kegiatan belajar mengajar siang','📚'],
+  ['16.00','Tahfidz / Kajian','Hafalan atau kajian kitab','👥'],
+  ['20.00','Belajar Malam','Belajar mandiri dan muroja\'ah','📝'],
+  ['21.30','Istirahat Malam','Persiapan istirahat','🛏️']
+];
+/* img: isi URL foto kegiatan nanti */
+const KEGIATAN = [
+  {t:'Kajian Kitab Kuning',d:'Pembelajaran kitab kuning bersama ustadz / ustadzah untuk memperdalam ilmu agama secara sistematis dan mendalam.',img:'',i:'📖'},
+  {t:'Hifdzol Mutun',d:'Program menghafal matan/kitab ringkas untuk membekali pemahaman yang kokoh.',img:'',i:'🕌'},
+  {t:'Hadroh',d:'Kegiatan seni Islami melatih kemahiran dan menumbuhkan kecintaan kepada Rasulullah.',img:'',i:'🌐'},
+  {t:'Berdagang',d:'Bekal kewirausahaan santri dalam berbagai kegiatan untuk mempersiapkan sikap mandiri.',img:'',i:'📈'},
+  {t:'Badminton',d:'Kegiatan olahraga untuk menjaga kesehatan, kebugaran, serta melatih kerja sama dan sportivitas.',img:'',i:'🏸'},
+  {t:'Futsal',d:'Kegiatan olahraga untuk menjaga kesehatan, kebugaran, serta melatih kerja sama dan sportivitas.',img:'',i:'⚽'}
+];
+/* Dokumentasi: ganti img dengan link foto. photos = daftar link foto untuk galeri utama */
+const DOKUMENTASI = [
+  {t:'Permatasa 2026',cat:'Kegiatan',tgl:'17 - 19 Juni',n:30,img:'',photos:['','','']},
+  {t:'Intihanun akhir tahun',cat:'Pengumuman',tgl:'21 - 23 Agustus',n:30,img:''},
+  {t:'HUT RI 2025',cat:'Perlombaan',tgl:'15 - 17 Agustus',n:30,img:''},
+  {t:'Lomba Hadroh',cat:'Perlombaan',tgl:'8 Februari 2026',n:30,img:''},
+  {t:'Ujian Pesantren',cat:'Akademik',tgl:'Akhir Semester',n:30,img:''},
+  {t:'Olahraga',cat:'Sosial',tgl:'Mingguan',n:30,img:''},
+  {t:'Kegiatan Contoh 7',cat:'Kegiatan',tgl:'Tanggal',n:20,img:''},
+  {t:'Kegiatan Contoh 8',cat:'Kegiatan',tgl:'Tanggal',n:20,img:''}
+];
+const PER_HAL = 6;
+
+/* ========= UTIL ========= */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function api(fn, ...args) {
+  return new Promise((res, rej) => google.script.run.withSuccessHandler(res).withFailureHandler(rej)[fn](...args));
+}
+function show(el, ok, text) { el.className = 'msg ' + (ok ? 'ok' : 'err'); el.textContent = text; }
+function img(el, url, fallbackText) {
+  if (url) { el.classList.remove('ph'); el.classList.add('bgimg'); el.style.backgroundImage = 'url("' + url + '")'; el.textContent = ''; }
+}
+function bgStyle(url) { return url ? ' style="background-image:url(\'' + esc(url) + '\')" ' : ' '; }
+
+/* ========= NAVIGASI ========= */
+function go(page) {
+  $$('.page').forEach(p => p.classList.toggle('hidden', p.dataset.page !== page));
+  $$('#menu a').forEach(a => a.classList.toggle('active', a.dataset.nav === page));
+  $('#hero').classList.toggle('hidden', page === 'dashboard');
+  $('#menu').classList.remove('open');
+  window.scrollTo(0, 0);
+}
+document.addEventListener('click', e => {
+  const n = e.target.closest('[data-nav]');
+  if (n) { e.preventDefault(); go(n.dataset.nav); }
+});
+$('#burger').onclick = () => $('#menu').classList.toggle('open');
+$('#yr').textContent = new Date().getFullYear();
+
+/* ========= KONFIG VISUAL ========= */
+if (CONFIG.logo) ['#logoBox', '#logoFoot'].forEach(s => { $(s).innerHTML = '<img src="' + esc(CONFIG.logo) + '" alt="Logo">'; });
+if (CONFIG.hero) $('#heroBg').style.backgroundImage = 'url("' + CONFIG.hero + '")';
+img($('#imgTentang'), CONFIG.tentang);
+$('#btnMaps').href = CONFIG.mapLink;
+if (CONFIG.mapEmbed) $('#mapBox').innerHTML = '<iframe src="' + esc(CONFIG.mapEmbed) + '" loading="lazy"></iframe>';
+(function () {
+  const parts = [];
+  if (CONFIG.instagram) parts.push('<a href="' + esc(CONFIG.instagram) + '" target="_blank">📷 Instagram</a>');
+  if (CONFIG.facebook) parts.push('<a href="' + esc(CONFIG.facebook) + '" target="_blank">📘 Facebook</a>');
+  if (CONFIG.tiktok) parts.push('<a href="' + esc(CONFIG.tiktok) + '" target="_blank">🎵 TikTok</a>');
+  if (parts.length) $('#sosmed').innerHTML = parts.join(' &nbsp; ');
+})();
+
+/* ========= RENDER KEGIATAN ========= */
+$('#jadwal').innerHTML = JADWAL.map(j => '<div><div class="ic">' + j[3] + '</div><b>' + j[0] + '</b>' + esc(j[1]) + '<br><small>' + esc(j[2]) + '</small></div>').join('');
+$('#kg').innerHTML = KEGIATAN.map(k =>
+  '<div class="k"><div class="im ' + (k.img ? 'bgimg' : 'ph') + '"' + bgStyle(k.img) + '>' + (k.img ? '' : 'Foto ' + esc(k.t)) + '<span class="badge">' + k.i + '</span></div><h3>' + esc(k.t) + '</h3><p>' + esc(k.d) + '</p></div>').join('');
+
+/* ========= RENDER DOKUMENTASI ========= */
+(function () {
+  const f = DOKUMENTASI[0];
+  $('#dfTitle').textContent = f.t;
+  $('#dfMeta').innerHTML = '<span>📅 ' + esc(f.tgl) + '</span><span>📍 Pondok Pesantren Al-Wustha</span>';
+  $('#dfGal').innerHTML = (f.photos || ['', '']).slice(0, 2).map(u => '<div class="' + (u ? 'bgimg' : 'ph') + '"' + bgStyle(u) + '>' + (u ? '' : 'Foto') + '</div>').join('');
+  let tampil = 0;
+  const box = $('#docs'), btn = $('#btnMore');
+  function muat() {
+    const list = DOKUMENTASI.slice(1 + tampil, 1 + tampil + PER_HAL);
+    list.forEach(d => {
+      box.insertAdjacentHTML('beforeend',
+        '<div class="doc"><div class="im ' + (d.img ? 'bgimg' : 'ph') + '"' + bgStyle(d.img) + '>' + (d.img ? '' : 'Foto') + '</div><div class="in"><span class="tag">' + esc(d.cat) + '</span><h4>' + esc(d.t) + '</h4><div>📅 ' + esc(d.tgl) + '</div><div>🖼️ ' + d.n + ' foto</div></div></div>');
+    });
+    tampil += list.length;
+    if (1 + tampil >= DOKUMENTASI.length) btn.classList.add('hidden');
+  }
+  btn.onclick = muat; muat();
+})();
+
+/* ========= PSB: UPLOAD & KIRIM ========= */
+const berkas = {};
+const MAX = 2 * 1024 * 1024;
+$$('#psbForm input[type=file]').forEach(inp => {
+  inp.onchange = () => {
+    const f = inp.files[0], lab = inp.closest('.up'), span = $('span', lab);
+    if (!f) { delete berkas[inp.dataset.key]; lab.classList.remove('ok'); return; }
+    if (f.size > MAX) { show($('#psbMsg'), false, 'Ukuran "' + f.name + '" melebihi 2 MB.'); inp.value = ''; return; }
+    const r = new FileReader();
+    r.onload = () => {
+      berkas[inp.dataset.key] = { name: f.name, type: f.type, data: String(r.result).split(',')[1] };
+      lab.classList.add('ok'); span.textContent = '✔ ' + f.name; $('#psbMsg').className = 'msg';
+    };
+    r.readAsDataURL(f);
+  };
+});
+$('#psbForm').onsubmit = async e => {
+  e.preventDefault();
+  const fm = e.target, msg = $('#psbMsg');
+  const d = { jenjang: fm.jenjang.value, nama: fm.nama.value, jk: fm.jk.value, tempat: fm.tempat.value, tgl: fm.tgl.value,
+              asal: fm.asal.value, alamat: fm.alamat.value, wa: fm.wa.value, berkas: berkas };
+  if (!d.jenjang || !d.nama.trim() || !d.jk || !d.tempat.trim() || !d.tgl || !d.asal.trim() || !d.alamat.trim() || !d.wa.trim())
+    return show(msg, false, 'Mohon lengkapi semua kolom bertanda *.');
+  if (!$('#agree').checked) return show(msg, false, 'Centang pernyataan kebenaran data terlebih dahulu.');
+  const b = $('#psbBtn'); b.disabled = true; b.textContent = 'Mengirim...'; msg.className = 'msg';
+  try {
+    const r = await api('submitPSB', d);
+    show(msg, r.ok, r.message);
+    if (r.ok) { fm.reset(); $$('.up').forEach(u => u.classList.remove('ok')); $$('.up span').forEach((s, i) => s.textContent = ['Scan Akta Kelahiran', 'Kartu Keluarga', 'Ijazah Terakhir', 'Pas Foto 3x4'][i]); Object.keys(berkas).forEach(k => delete berkas[k]); }
+  } catch (err) { show(msg, false, 'Gagal mengirim: ' + err.message); }
+  b.disabled = false; b.textContent = 'Daftar Sekarang';
+};
+$('#stBtn').onclick = async () => {
+  const msg = $('#stMsg');
+  try {
+    const r = await api('cekStatus', $('#stId').value, $('#stWa').value);
+    if (r.ok) show(msg, true, r.nama + ' (' + r.jenjang + ') — Status: ' + r.status + (r.catatan ? ' — ' + r.catatan : ''));
+    else show(msg, false, r.message);
+  } catch (err) { show(msg, false, err.message); }
+};
+
+/* ========= MASUK (LOGIN KODE) ========= */
+const NAMA_PERAN = { admin: 'Admin', guru: 'Guru / Mudaris', santri: 'Santri', ortu: 'Orang Tua' };
+let peran = 'admin', sesi = null;
+function bukaModal() { $('#modal').classList.remove('hidden'); $('#mMsg').className = 'msg'; $('#mCode').value = ''; setTimeout(() => $('#mCode').focus(), 50); }
+function tutupModal() { $('#modal').classList.add('hidden'); }
+$('#btnMasuk').onclick = () => sesi ? bukaDashboard() : bukaModal();
+$('#mClose').onclick = tutupModal;
+$('#modal').onclick = e => { if (e.target.id === 'modal') tutupModal(); };
+$$('.role').forEach(r => r.onclick = () => { $$('.role').forEach(x => x.classList.remove('sel')); r.classList.add('sel'); peran = r.dataset.role; });
+$('#mCode').addEventListener('keydown', e => { if (e.key === 'Enter') $('#mBtn').click(); });
+$('#mBtn').onclick = async () => {
+  const b = $('#mBtn'), msg = $('#mMsg');
+  b.disabled = true; b.textContent = 'Memeriksa...';
+  try {
+    const r = await api('login', peran, $('#mCode').value);
+    if (r.ok) {
+      sesi = { token: r.token, role: r.role, nama: r.nama };
+      try { sessionStorage.setItem('aw_sesi', JSON.stringify(sesi)); } catch (x) {}
+      tutupModal(); bukaDashboard();
+    } else show(msg, false, r.message);
+  } catch (err) { show(msg, false, 'Gagal terhubung: ' + err.message); }
+  b.disabled = false; b.textContent = 'Masuk';
+};
+$('#btnKeluar').onclick = async () => {
+  if (sesi) { try { await api('logout', sesi.token); } catch (x) {} }
+  sesi = null; try { sessionStorage.removeItem('aw_sesi'); } catch (x) {}
+  $('#btnMasuk').innerHTML = 'Masuk &nbsp;›'; go('beranda');
+};
+
+/* ========= DASHBOARD ========= */
+async function bukaDashboard() {
+  go('dashboard');
+  $('#dName').textContent = 'Selamat datang, ' + (sesi.nama || NAMA_PERAN[sesi.role]);
+  $('#dRole').textContent = NAMA_PERAN[sesi.role];
+  $('#btnMasuk').innerHTML = 'Dashboard &nbsp;›';
+  const body = $('#dBody');
+  body.innerHTML = '<p class="sub" style="margin-top:20px">Memuat...</p>';
+  try {
+    let html = '';
+    if (sesi.role === 'admin') html += await adminHtml(); else html += menuPeran(sesi.role);
+    html += await pengumumanHtml();
+    body.innerHTML = html;
+    if (sesi.role === 'admin') pasangAdmin();
+  } catch (err) {
+    body.innerHTML = '<div class="msg err">' + esc(err.message) + '</div>';
+    if (/sesi|ditolak/i.test(err.message)) { sesi = null; try { sessionStorage.removeItem('aw_sesi'); } catch (x) {} }
+  }
+}
+function menuPeran(r) {
+  const m = {
+    guru:   [['📋','Jadwal Mengajar'],['📝','Input Nilai'],['🗓️','Absensi Santri'],['📚','Materi Ajar']],
+    santri: [['🗓️','Jadwal Pelajaran'],['📝','Nilai & Rapor'],['📖','Setoran Hafalan'],['🏅','Prestasi']],
+    ortu:   [['👦','Data Putra/Putri'],['📝','Nilai & Rapor'],['💳','Pembayaran SPP'],['🗓️','Kehadiran']]
+  }[r];
+  return '<div class="cards">' + m.map(x => '<div class="cd"><span style="font-size:1.5rem">' + x[0] + '</span><b style="font-size:.95rem">' + x[1] + '</b><small>Segera hadir</small></div>').join('') + '</div>';
+}
+async function pengumumanHtml() {
+  const list = await api('getPengumuman', sesi.token);
+  let h = '<h3 class="serif" style="color:var(--g1);margin:24px 0 10px">Pengumuman</h3>';
+  if (sesi.role === 'admin') {
+    h += '<div class="soft" style="margin-top:0"><div class="f"><label>Judul</label><input id="aJudul"></div><div class="f"><label>Isi</label><textarea id="aIsi"></textarea></div><button class="btn" id="aKirim">Terbitkan</button><div class="msg" id="aMsg"></div></div>';
+  }
+  h += list.length ? list.map(a => '<div class="ann"><b>' + esc(a.judul) + '</b>' + esc(a.isi) + '<br><small>' + esc(a.waktu) + ' · ' + esc(a.penulis) + '</small></div>').join('') : '<p class="sub">Belum ada pengumuman.</p>';
+  return h;
+}
+async function adminHtml() {
+  const data = await api('getPendaftar', sesi.token);
+  window._pendaftar = data;
+  const c = s => data.filter(x => x.status === s).length;
+  let h = '<div class="cards"><div class="cd"><b>' + data.length + '</b>Total Pendaftar</div><div class="cd"><b>' + c('Menunggu Verifikasi') + '</b>Menunggu</div><div class="cd"><b>' + c('Diverifikasi') + '</b>Diverifikasi</div><div class="cd"><b>' + c('Diterima') + '</b>Diterima</div></div>';
+  h += '<h3 class="serif" style="color:var(--g1);margin:10px 0">Data Pendaftar PSB</h3><div class="tscroll"><table><tr><th>ID</th><th>Nama</th><th>Jenjang</th><th>WA</th><th>Berkas</th><th>Status</th><th></th></tr>';
+  h += data.map((p, i) => {
+    const b = [['Akta', p.akta], ['KK', p.kk], ['Ijazah', p.ijazah], ['Foto', p.foto]].filter(x => /^https?:/.test(x[1]))
+      .map(x => '<a href="' + esc(x[1]) + '" target="_blank" style="color:var(--g2)">' + x[0] + '</a>').join(' · ') || '-';
+    const opts = ['Menunggu Verifikasi', 'Diverifikasi', 'Diterima', 'Ditolak'].map(s => '<option' + (s === p.status ? ' selected' : '') + '>' + s + '</option>').join('');
+    return '<tr><td>' + esc(p.id) + '<br><small>' + esc(p.waktu) + '</small></td><td>' + esc(p.nama) + '<br><small>' + esc(p.jk) + '</small></td><td>' + esc(p.jenjang) + '</td><td>' + esc(p.wa) + '</td><td>' + b + '</td><td><select data-i="' + i + '">' + opts + '</select></td><td><button class="btn" data-save="' + i + '" style="padding:6px 12px">Simpan</button></td></tr>';
+  }).join('');
+  return h + '</table></div>' + (data.length ? '' : '<p class="sub">Belum ada pendaftar.</p>');
+}
+function pasangAdmin() {
+  $$('[data-save]').forEach(b => b.onclick = async () => {
+    const i = +b.dataset.save, p = window._pendaftar[i], st = $('select[data-i="' + i + '"]').value;
+    b.disabled = true; b.textContent = '...';
+    try { const r = await api('updateStatus', sesi.token, p.id, st, ''); b.textContent = r.ok ? '✔' : '✖'; } catch (x) { b.textContent = '✖'; }
+    setTimeout(() => { b.disabled = false; b.textContent = 'Simpan'; }, 1200);
+  });
+  const k = $('#aKirim');
+  if (k) k.onclick = async () => {
+    const m = $('#aMsg');
+    try {
+      const r = await api('addPengumuman', sesi.token, $('#aJudul').value, $('#aIsi').value);
+      if (r.ok) bukaDashboard(); else show(m, false, r.message);
+    } catch (x) { show(m, false, x.message); }
+  };
+}
+
+/* pulihkan sesi bila halaman dimuat ulang */
+(async function () {
+  try {
+    const s = JSON.parse(sessionStorage.getItem('aw_sesi') || 'null');
+    if (!s) return;
+    const r = await api('cekSesi', s.token);
+    if (r.ok) { sesi = { token: s.token, role: r.role, nama: r.nama }; $('#btnMasuk').innerHTML = 'Dashboard &nbsp;›'; }
+    else sessionStorage.removeItem('aw_sesi');
+  } catch (x) {}
+})();
+
+go('beranda');
+</script>
+</body>
+</html>
